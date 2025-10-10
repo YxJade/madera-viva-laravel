@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaderaViva | Muebles de Madera Artesanales</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Swiper JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/madera/css/style.css">
+
+    </head>
+<body>
+    <!-- Header y navegación (se mantiene igual) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <i class="fas fa-tree"></i>
+                    <span class="logo-text">MaderaViva</span>
+                </a>
+                
+                <nav class="d-none d-lg-block">
+                     <ul>
+                        <li><a href="#home" class="active">Inicio</a></li>
+                        <li><a href="#products">Productos</a></li>
+                        <li><a href="#catalog">Catálogo</a></li>
+                        <li><a href="#offers">Ofertas</a></li>
+                        <li><a href="#gallery">Galería</a></li>
+                        <li><a href="#about">Nosotros</a></li>
+                        <li><a href="#newsletter">Contacto</a></li>
+                    </ul>
+                </nav>
+
+                
+                <!-- En tu menú o donde quieras agregar el acceso -->
+                <!-- <button onclick="loadDolibarrDashboard()">📊 Dashboard Dolibarr</button>
+                <div id="main-content">
+                </div> -->
+                
+                <div class="header-actions">
+                    <!-- Ícono de búsqueda (lupa) - Solo visible en desktop -->
+                    <div class="search-icon d-none d-lg-block" id="search-button">
+                        <i class="fas fa-search" title="Buscar productos"></i>
+                    </div>
+                    
+                    <!-- Íconos de autenticación -->
+                    <div class="auth-icons d-flex gap-3" id="auth-icons">
+                        <div class="auth-icon" id="register-button">
+                            <i class="fas fa-user-plus" title="Registrarse"></i>
+                        </div>
+                        <div class="auth-icon" id="login-button">
+                            <i class="fas fa-sign-in-alt" title="Iniciar sesión"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Información de usuario cuando está loggeado -->
+                    <div class="user-info d-none" id="user-info">
+                        <i class="fas fa-user-circle"></i>
+                        <span id="user-name">Usuario</span>
+                        <div class="user-menu" id="user-menu">
+                            <div class="user-menu-item" id="logout-button">
+                                <i class="fas fa-user"></i>
+                                <span>Cerrar sesion</span>
+                            </div>
+                            <!-- <div class="user-menu-item" id="logout-button">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Cerrar sesión</span>
+                            </div> -->
+                        </div>
+                    </div>
+                    
+                    <!-- Ícono de carrito -->
+                    <div class="cart-icon" id="cart-button">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <!--Botón tema negro/blanco-->
+                    <button class="theme-toggle" id="theme-toggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de navegación inferior (se mantiene igual) -->
+    <div class="bottom-nav">
+        <div class="container">
+            <div class="bottom-nav-items">
+                <a href="#home" class="bottom-nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="#catalog" class="bottom-nav-item">
+                    <i class="fas fa-th-large"></i>
+                    <span>Catálogo</span>
+                </a>
+
+                <a href="#offers" class="bottom-nav-item">
+                    <i class="fas fa-tags"></i>
+                    <span>Ofertas</span>
+                </a>
+
+                <a href="#gallery" class="bottom-nav-item">
+                    <i class="fas fa-images"></i>
+                    <span>Galería</span>
+                </a>
+
+                <a href="#about" class="bottom-nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Nosotros</span>
+                </a>
+
+                <a href="#newsletter" class="bottom-nav-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contacto</span>
+                </a>
+
+
+                <div class="bottom-nav-item" id="mobile-search-button">
+                    <i class="fas fa-search"></i>
+                    <span>Buscar</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section (se mantiene igual) -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text fade-in">
+                    <h1 class="hero-title">Muebles de madera que transforman tu hogar</h1>
+                    <p class="hero-subtitle">Diseños únicos, duraderos y sostenibles. Hechos con madera certificada y procesos artesanales que respetan el medio ambiente.</p>
+                    <a href="#catalog" class="btn">Explorar catálogo</a>
+                </div>
+                
+                <div class="hero-image fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mueble de madera elegante">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+<section id="products" class="products-section">
+    <div class="container">
+        <h2 class="section-title fade-in">Nuestros productos</h2>
+        <div id="products-grid" class="products-grid">
+            Los productos se cargarán aquí dinámicamente
+        </div>
+    </div>
+</section>
+
+
+<section id="catalog-section" class="catalog-section">
+    <div class="container">
+        <div id="catalog-view-manager" class="catalog-wrapper">
+
+            <div id="category-summary-view" class="view active">
+                <h2 class="section-title">Explora nuestras categorías</h2>
+                <div id="categories-grid" class="categories-grid">
+                    </div>
+            </div>
+
+            <div id="product-list-view" class="view">
+                <button class="back-button" aria-label="Volver a Categorías">
+                    ← Volver a Categorías
+                </button>
+                <h2 id="product-list-title" class="section-title">
+                    Productos
+                </h2>
+
+                <div class="product-list-content">
+                    
+                    <!-- <aside id="filters-panel" class="filters-panel">
+                        <div class="filter-group">
+                            <h3 class="filter-title">Filtrar Productos</h3>
+                            <label for="price-range">Precio Máximo</label>
+                            <input type="range" id="price-range" min="0" max="30000" value="20000">
+                            <span class="price-value">$20,000 MXN</span>
+                        </div>
+                        <div class="filter-group">
+                            <label for="brand-select">Marca</label>
+                            <select id="brand-select">
+                                <option>Todas las marcas</option>
+                            </select>
+                        </div>
+                        
+                    </aside> -->
+
+                    <div id="products-category-grid" class="products-grid">
+                        </div>
+
+                </div>
+                </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+    <!-- SECCIÓN: OFERTAS -->
+    <section class="offers-section" id="offers"">
+         <div class="container">
+        <h2 class="section-title">Ofertas Especiales</h2>
+        <p class="section-subtitle">Aprovecha nuestros descuentos exclusivos</p>
+        
+        <!-- Swiper de ofertas - VACÍO, se llenará con JavaScript -->
+        <div class="offers-swiper swiper">
+            <div class="swiper-wrapper" id="offers-swiper-wrapper">
+                <!-- Las ofertas se cargarán dinámicamente aquí -->
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </div>
+    </section>
+
+    <!-- GALERÍA VISUAL  -->
+    <section class="gallery-section" id="gallery"">
+        <div class="container">
+            <h2 class="gallery-title fade-in">Nuestra Inspiración</h2>
+            <p class="gallery-subtitle fade-in delay-1">Descubre la belleza natural de la madera en cada rincón de tu hogar</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mueble de diseño moderno">
+                    <div class="gallery-caption">
+                        <h3>Diseño Contemporáneo</h3>
+                        <p>Líneas limpias y funcionales</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1519947486511-46149fa0a254?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Sala con muebles de madera">
+                    <div class="gallery-caption">
+                        <h3>Espacios Armoniosos</h3>
+                        <p>Equilibrio entre funcionalidad y belleza</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Mesa de comedor elegante">
+                    <div class="gallery-caption">
+                        <h3>Elegancia Natural</h3>
+                        <p>Texturas y tonos únicos</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Dormitorio con cama de madera">
+                    <div class="gallery-caption">
+                        <h3>Descanso Natural</h3>
+                        <p>Ambientes cálidos y acogedores</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Detalle de textura de madera">
+                    <div class="gallery-caption">
+                        <h3>Texturas Únicas</h3>
+                        <p>La belleza en cada detalle</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1616137422495-1e9e46e2aa77?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Silla de diseño escandinavo">
+                    <div class="gallery-caption">
+                        <h3>Diseño Escandinavo</h3>
+                        <p>Simplicidad y funcionalidad</p>
+                    </div>
+                </div>
+                
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Estantería de madera natural">
+                    <div class="gallery-caption">
+                        <h3>Organización Natural</h3>
+                        <p>Espacios ordenados con estilo</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="gallery-text">
+                <h2 class="gallery-quote">"Los muebles <span>están llamando</span>, responde con estilo"</h2>
+                <p class="gallery-desc">En MaderaViva, creemos que cada pieza cuenta una historia. Nuestros diseños artesanales transforman espacios en hogares, creando ambientes donde las memorias se construyen y los momentos especiales se atesoran.</p>
+            </div>
+        </div>
+    </section>
+
+
+     <!-- About Us Section -->
+    <section class="about-us" id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">Sobre Nosotros</h2>
+            
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h3 class="about-title">Nuestra Historia</h3>
+                    <p class="about-description">MaderaViva nació en 2010 con la visión de crear muebles que no solo embellecen los espacios, sino que también cuentan una historia. Cada pieza es el resultado de un cuidadoso proceso artesanal que combina técnicas tradicionales con diseño contemporáneo.</p>
+                    <p class="about-description">Trabajamos exclusivamente con maderas de origen sostenible y procesos que respetan el medio ambiente, porque creemos que la belleza debe ser responsable.</p>
+                    
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4 class="value-title">Sostenibilidad</h4>
+                            <p>Materiales ecológicos y procesos responsables</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4 class="value-title">Calidad</h4>
+                            <p>Artesanía excepcional y atención al detalle</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-pencil-ruler"></i>
+                            </div>
+                            <h4 class="value-title">Diseño</h4>
+                            <p>Formas modernas que honran la tradición</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h4 class="value-title">Pasión</h4>
+                            <p>Amor por la madera y su transformación</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-image fade-in delay-1">
+                    <img src="https://i.pinimg.com/1200x/37/d6/32/37d632e0b528c21f315d4cfe875abf7d.jpg" alt="Nuestro taller" class="img-fluid rounded" style="box-shadow: var(--shadow);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Newsletter Section -->
+<section class="newsletter" id="newsletter">
+    <div class="container">
+        <div class="newsletter-content fade-in">
+            <h2 class="newsletter-title">Únete a nuestra comunidad</h2>
+            <p class="newsletter-text">Suscríbete para recibir novedades, ofertas exclusivas y tips para el cuidado de tus muebles.</p>
+            
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" class="newsletter-input" id="newsletterEmail" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="btn" id="subscribeBtn">
+                    <span id="btnText">Suscribirse</span>
+                    <div class="spinner" id="spinner" style="display: none;"></div>
+                </button>
+            </form>
+            
+            <p class="privacy-text">Al suscribirte aceptas nuestra <a href="#privacy-policy">política de privacidad</a>.</p>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Footer (se mantiene igual) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <a href="#" class="footer-logo">MaderaViva</a>
+                    <p class="footer-text">Creando muebles con alma desde 2010. Nuestros diseños unen tradición artesanal con funcionalidad moderna para tu hogar.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Catálogo</a></li>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Galería</a></li>
+                        <li><a href="#">Testimonios</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Categorías</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Dormitorio</a></li>
+                        <li><a href="#">Salón</a></li>
+                        <li><a href="#">Comedor</a></li>
+                        <li><a href="#">Exterior</a></li>
+                        <li><a href="#">Ofertas</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Calle Artesanos 23, Madrid</li>
+                        <li><i class="fas fa-phone"></i> +34 912 345 678</li>
+                        <li><i class="fas fa-envelope"></i> info@maderaviva.com</li>
+                        <li><i class="fas fa-clock"></i> Lun-Vie: 9:00 - 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 MaderaViva. Todos los derechos reservados. | <a href="#">Política de Privacidad</a> | <a href="#">Términos y Condiciones</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal - Mejorado -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-header d-flex justify-content-between align-items-center">
+            <h2 class="cart-title">Tu Carrito</h2>
+            <button class="close-cart" id="close-cart">&times;</button>
+        </div>
+        
+        <div class="cart-items-container" id="cart-items">
+            <!-- Los elementos del carrito se añadirán dinámicamente -->
+            <div class="empty-cart" id="empty-cart">Tu carrito está vacío</div>
+        </div>
+        
+        <div class="cart-footer">
+            <div class="checkout-message d-none" id="checkout-message">
+                Debes agregar productos a tu carrito para poder finalizar la compra.
+            </div>
+            <div class="cart-total d-flex justify-content-between">
+                <span>Total:</span>
+                <span id="total-amount">$0 MXN</span>
+            </div>
+            <button class="checkout-btn w-100" id="checkout-btn" disabled>Finalizar Compra</button>
+        </div>
+    </div>
+
+    <!-- Quick View Modal - Mejorado con Bootstrap -->
+    <div class="quickview-modal" id="quickview-modal">
+        <div class="quickview-header d-flex justify-content-between align-items-center">
+            <h2 class="quickview-title" id="quickview-title">Nombre del Producto</h2>
+            <button class="close-quickview" id="close-quickview">&times;</button>
+        </div>
+        
+        <div class="quickview-body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="quickview-image">
+                            <img id="quickview-img" src="" alt="Vista rápida del producto">
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <p class="quickview-brand" id="quickview-brand">MaderaViva</p>
+                        <p class="quickview-price" id="quickview-price">$0 MXN</p>
+                        
+                        <div class="quickview-quantity d-flex align-items-center">
+                            <span class="quickview-quantity-label me-3">Cantidad:</span>
+                            <div class="cart-item-quantity d-flex align-items-center">
+                                <button class="quantity-btn minus" id="quickview-minus">-</button>
+                                <span class="mx-2" id="quickview-quantity">1</span>
+                                <button class="quantity-btn plus" id="quickview-plus">+</button>
+                            </div>
+                        </div>
+                        
+                        <button class="quickview-add w-100" id="quickview-add">Añadir al Carrito</button>
+                        <div class="added-confirmation" id="added-confirmation">¡Producto añadido al carrito!</div>
+                        
+                        <!-- Acordeón para descripción y características -->
+                        <div class="accordion mt-4" id="productAccordion">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDescription" aria-expanded="true" aria-controls="collapseDescription">
+                                        Descripción
+                                    </button>
+                                </h2>
+                                <div id="collapseDescription" class="accordion-collapse collapse show" data-bs-parent="#productAccordion">
+                                    <div class="accordion-body">
+                                        <p class="quickview-description" id="quickview-description">Descripción del producto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFeatures" aria-expanded="false" aria-controls="collapseFeatures">
+                                        Características
+                                    </button>
+                                </h2>
+                                <div id="collapseFeatures" class="accordion-collapse collapse" data-bs-parent="#productAccordion">
+                                    <div class="accordion-body">
+                                        <div class="product-features">
+                                            <table class="features-table w-100">
+                                                <tr>
+                                                    <td>Material:</td>
+                                                    <td id="feature-material">Madera maciza de roble</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Dimensiones:</td>
+                                                    <td id="feature-dimensions">120x60x45 cm (Ancho x Alto x Profundidad)</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Acabado:</td>
+                                                    <td id="feature-finish">Natural con protección ecológica</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Garantía:</td>
+                                                    <td id="feature-warranty">2 años</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal FINALIZAR COMPRA - Mejorado -->
+    <div class="checkout-modal" id="checkout-modal">
+        <div class="checkout-header d-flex justify-content-between align-items-center">
+            <h2 class="checkout-title">Finalizar Compra</h2>
+            <button class="close-checkout" id="close-checkout">&times;</button>
+        </div>
+        
+        <div class="checkout-body">
+            <div class="checkout-summary">
+                <h3>Resumen de tu pedido</h3>
+                <div class="checkout-items" id="checkout-items">
+                    <!-- Los elementos del checkout se añadirán dinámicamente -->
+                </div>
+                <div class="cart-total d-flex justify-content-between">
+                    <span>Total:</span>
+                    <span id="checkout-total">$0 MXN</span>
+                </div>
+            </div>
+            
+            <form class="checkout-form" id="checkout-form">
+                <div class="form-group">
+                    <label for="name">Nombre completo</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Dirección de envío</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                <label for="city">Ciudad</label>
+                <input type="text" id="city" required>
+            </div>
+            <div class="form-group">
+                <label for="zipcode">Código postal</label>
+                <input type="text" id="zipcode" required>
+            </div>
+
+
+
+                <div class="form-group">
+                    <label for="card">Número de tarjeta</label>
+                    <input type="text" id="card" placeholder="1234 5678 9012 3456" required>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="expiry">Fecha de expiración</label>
+                            <input type="text" id="expiry" placeholder="MM/AA" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" placeholder="123" required>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="confirm-btn w-100">Confirmar Pedido</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Auth Modal - Actualizado -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-header">
+            <button class="close-auth" id="close-auth">&times;</button>
+        </div>
+        
+        <div class="auth-body">
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Iniciar Sesión</div>
+                <div class="auth-tab" id="register-tab">Registrarse</div>
+            </div>
+            
+            <form class="auth-form" id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Correo electrónico</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn w-100">Iniciar Sesión</button>
+            </form>
+            
+            <form class="auth-form d-none" id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Nombre completo</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Correo electrónico</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Contraseña</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirmar contraseña</label>
+                    <input type="password" id="register-confirm" required>
+                </div>
+                <button type="submit" class="btn w-100">Registrarse</button>
+            </form>
+            
+            <div class="auth-footer">
+                Al registrarte, aceptas nuestros Términos y Condiciones y Política de Privacidad
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Modal -->
+    <div class="profile-modal" id="profile-modal">
+        <div class="profile-header">
+            <h2 class="profile-title">Mi Perfil</h2>
+            <button class="close-profile" id="close-profile">&times;</button>
+        </div>
+        
+        <div class="profile-body">
+            <div class="profile-info">
+                <div class="profile-info-item">
+                    <span class="profile-info-label">Nombre:</span>
+                    <span id="profile-name">Usuario Ejemplo</span>
+                </div>
+                <div class="profile-info-item">
+                    <span class="profile-info-label">Email:</span>
+                    <span id="profile-email">usuario@ejemplo.com</span>
+                </div>
+                <div class="profile-info-item">
+                    <span class="profile-info-label">Teléfono:</span>
+                    <span id="profile-phone">+34 123 456 789</span>
+                </div>
+                <div class="profile-info-item">
+                    <span class="profile-info-label">Dirección:</span>
+                    <span id="profile-address">Calle Falsa 123, Madrid</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal - Mejorado -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-header d-flex justify-content-between align-items-center">
+            <h2 class="search-title">Resultados de búsqueda</h2>
+            <button class="close-search" id="close-search">&times;</button>
+        </div>
+        
+        <div class="search-body">
+            <div class="search-form">
+                <input type="text" class="search-input" placeholder="Buscar productos..." id="modal-search-input">
+            </div>
+            
+            <div class="search-results" id="search-results">
+                <!-- Los resultados de búsqueda se añadirán dinámicamente -->
+                <div class="no-results" id="no-results">No se encontraron productos.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="success-message">
+        <div class="success-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <p class="success-text">¡Gracias por tu compra! Tu pedido ha sido procesado correctamente.</p>
+        <button class="success-btn" id="success-btn">Continuar Comprando</button>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+   
+    
+    
+<script src="/madera/js/script.js"></script>
