@@ -54,4 +54,62 @@ Route::get('/{any?}', function () {
 
 
 
+// Proxy para Google Tag Manager
+Route::get('/gtm-proxy.js', function() {
+    try {
+        $gtmId = 'GTM-T94039V7';
+        $url = "https://www.googletagmanager.com/gtm.js?id={$gtmId}";
+        
+        // Intentar obtener desde caché
+        $cacheKey = 'gtm_script_' . $gtmId;
+        $cached = Cache::get($cacheKey);
+        
+        if ($cached) {
+            return response($cached)
+                ->header('Content-Type', 'application/javascript; charset=utf-8')
+                ->header('Cache-Control', 'public, max-age=3600');
+        }
+        
+        // Descargar script usando cURL
+        $ch = curl_init();
+        curl_setopt_array($ch, [
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_TIMEOUT => 10,
+            CURLOPT_USERAGENT => 'Mozilla/5.0 (compatible; GTMProxy/1.0)',
+        ]);
+        
+        $script = curl_exec($ch);
+        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        $error = curl_error($ch);
+        curl_close($ch);
+        
+        if ($httpCode !== 200 || empty($script)) {
+            \Log::error("GTM Proxy failed: HTTP {$httpCode}, Error: {$error}");
+            
+            // Fallback: script mínimo para evitar errores JS
+            $fallbackScript = "window.dataLayer = window.dataLayer || []; console.warn('GTM proxy failed');";
+            return response($fallbackScript, 503)
+                ->header('Content-Type', 'application/javascript; charset=utf-8');
+        }
+        
+        // Cachear por 1 hora
+        Cache::put($cacheKey, $script, 3600);
+        
+        return response($script)
+            ->header('Content-Type', 'application/javascript; charset=utf-8')
+            ->header('Cache-Control', 'public, max-age=3600')
+            ->header('X-GTM-Proxy', 'active');
+            
+    } catch (\Exception $e) {
+        \Log::error('GTM Proxy exception: ' . $e->getMessage());
+        return response('window.dataLayer = window.dataLayer || [];', 500)
+            ->header('Content-Type', 'application/javascript; charset=utf-8');
+    }
+});
+
+
+
 
