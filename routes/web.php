@@ -54,36 +54,4 @@ Route::get('/{any?}', function () {
 
 
 
-// routes/web.php
-Route::get('/gtm.js', function() {
-    try {
-        $gtmId = 'GTM-T94039V7';
-        $url = "https://www.googletagmanager.com/gtm.js?id={$gtmId}";
-        
-        // Usar cURL en lugar de file_get_contents
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Solo para prueba
-        
-        $script = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-        
-        if ($httpCode !== 200 || empty($script)) {
-            \Log::error("GTM Proxy failed: HTTP {$httpCode}");
-            return response('// GTM unavailable', 503)
-                ->header('Content-Type', 'application/javascript');
-        }
-        
-        return response($script)
-            ->header('Content-Type', 'application/javascript')
-            ->header('Cache-Control', 'public, max-age=3600');
-            
-    } catch (\Exception $e) {
-        \Log::error('GTM Proxy error: ' . $e->getMessage());
-        return response('// GTM error', 500)
-            ->header('Content-Type', 'application/javascript');
-    }
-});
+
