@@ -37,7 +37,7 @@ const API_BASE_URL = 'https://madera-viva-laravel-production.up.railway.app/api'
 
 
 
-// ✅ Delegación global: UN SOLO LISTENER para productos y ofertas
+// Delegación global: UN SOLO LISTENER para productos y ofertas
 document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', handleGlobalClicks);
 });
@@ -189,22 +189,7 @@ function updateAuthUI() {
         });
     }
 }
-// function updateAuthUI() {
-//     const authIcons = document.getElementById('auth-icons');
-//     const userInfo = document.getElementById('user-info');
-//     const userName = document.getElementById('user-name');
 
-//     if (isLoggedIn && currentUser) {
-      
-//         if (authIcons) authIcons.classList.add('d-none');
-//         if (userInfo) userInfo.classList.remove('d-none');
-//         if (userName) userName.textContent = currentUser.name;
-//     } else {
-      
-//         if (authIcons) authIcons.classList.remove('d-none');
-//         if (userInfo) userInfo.classList.add('d-none');
-//     }
-// }
 
 // Función para registrar un nuevo usuario
 async function registerUser(name, email, password) {
@@ -414,7 +399,7 @@ function saveLocalCart() {
 }
 
 // Función unificada para añadir productos al carrito
-// Función corregida para añadir productos al carrito
+// Función para añadir productos al carrito
 async function addToCart(productId, name, price, image, quantity = 1) {
     if (!isLoggedIn) {
         showAlert('Debes iniciar sesión para añadir productos al carrito', 'warning');
@@ -550,7 +535,7 @@ function getCartItemId(productId, cartItems = null) {
     return item ? item.id : productId; // Fallback al product_id si no hay cart_item_id
 }
 
-// Función mejorada para eliminar producto del carrito
+// Función para eliminar producto del carrito
 async function removeFromCart(productId) {
     if (!isLoggedIn) {
         showAlert('Debes iniciar sesión para modificar el carrito', 'warning');
@@ -591,7 +576,7 @@ async function removeFromCart(productId) {
     }
 }
 
-// Función mejorada para vaciar el carrito
+// Función  para vaciar el carrito
 async function clearCart() {
     if (!isLoggedIn) {
         showAlert('Debes iniciar sesión para modificar el carrito', 'warning');
@@ -722,28 +707,7 @@ function updateCart() {
 
 // ========== SISTEMA DE PRODUCTOS Y CATEGORÍAS DESDE API ==========
 
-// Función para cargar categorías desde la API
-// async function loadCategories() {
-//     try {
-//         const res = await fetch(`${API_BASE_URL}/categories`);
-//         const data = await res.json();
-
-//         if (data.success) {
-//             return data.data; // ← DEVOLVER
-//         } else {
-//             console.warn('API devolvió success=false, usando respaldo');
-//             return loadFallbackCategories(); // ← DEVOLVER
-//         }
-//     } catch (e) {
-//         console.error('Error cargando categorías:', e);
-//         return loadFallbackCategories(); // ← DEVOLVER
-//     }
-// }
-
-
-// Función corregida para cargar categorías
-// Función corregida para cargar categorías
-// ✅ FUNCIÓN LOADCATEGORIES MEJORADA
+// FUNCIÓN LOADCATEGORIES 
 async function loadCategories() {
     try {
         console.log('🔄 Cargando categorías desde API...');
@@ -789,7 +753,7 @@ async function loadCategories() {
 }
 
 
-// ✅ FUNCIÓN LOADPRODUCTS MEJORADA
+// FUNCIÓN LOADPRODUCTS 
 async function loadProducts() {
     try {
         console.log('🔄 Cargando productos desde API...');
@@ -978,7 +942,7 @@ async function showProdView(slug){
 }
 
 /* 3. Mapea producto */
-// ✅ FUNCIÓN MAPPRODUCT MEJORADA
+// FUNCIÓN MAPPRODUCT 
 function mapProduct(p) {
     const finalPrice = (p.discount_percentage && p.old_price) 
         ? p.old_price * (1 - p.discount_percentage / 100) 
@@ -998,7 +962,7 @@ function mapProduct(p) {
 }
 
 /* 4. Pinta grilla */
-// ✅ RENDERPRODGRID MEJORADO
+// RENDERPRODGRID 
 function renderProdGrid() {
     const grid = document.getElementById('products-category-grid');
     if (!grid) {
@@ -1066,7 +1030,7 @@ function renderProdGrid() {
 }
 
 /* 5. Filtros */
-// ✅ BUILD FILTERS MEJORADO
+// BUILD FILTERS 
 function buildFilters() {
     const panel = document.getElementById('filters-panel');
     if (!panel) {
@@ -1115,7 +1079,7 @@ function buildFilters() {
     document.getElementById('brandSel').addEventListener('change', applyFilters);
 }
 
-// ✅ APPLY FILTERS MEJORADO
+// APPLY FILTERS 
 function applyFilters() {
     const priceRange = document.getElementById('priceRange');
     const brandSel = document.getElementById('brandSel');
@@ -1138,7 +1102,7 @@ function applyFilters() {
 function showCatView(){ toggleViews('category-summary-view'); }
 
 /* 7. Alternar vistas */
-// ✅ SISTEMA DE VISTAS MEJORADO
+// SISTEMA DE VISTAS 
 function toggleViews(showId) {
     console.log('🔄 Cambiando a vista:', showId);
     
@@ -1157,7 +1121,7 @@ function toggleViews(showId) {
 function showCatView() {
     toggleViews('category-summary-view');
 }
-// ✅ FUNCIÓN SHOWPRODVIEW MEJORADA CON MÁS ROBUSTEZ
+//FUNCIÓN SHOWPRODVIEW 
 async function showProdView(slug) {
     try {
         console.log('🔄 Cargando productos para categoría:', slug);
@@ -1268,7 +1232,6 @@ async function showProdView(slug) {
 
 
 /* ----------  9. Inicializar catálogo ---------- */
-// ✅ REEMPLAZA TU FUNCIÓN initCatalogSection CON ESTA VERSIÓN COMPLETA:
 function initCatalogSection() {
     console.log('🔄 Inicializando sección de catálogo...');
     
@@ -1354,10 +1317,6 @@ async function loadProductsByCategory(categorySlug) {
 }
 
 // ========== FUNCIONES DE RENDERIZADO ==========
-
-
-
-
 function renderOfferProducts(offerProducts) {
     const offersSwiperWrapper = document.querySelector('.offers-swiper .swiper-wrapper');
     if (!offersSwiperWrapper) return;
@@ -1499,16 +1458,7 @@ function renderProducts() {
 
 // ========== FUNCIONES DE FALLBACK ==========
 
-// function loadFallbackCategories() {
-//     return [
-//         { id: 1, slug: 'sillas', name: 'Sillas', image_url: '/img/sillas.jpg', products_count: 5 },
-//         { id: 2, slug: 'mesas', name: 'Mesas', image_url: '/img/mesas.jpg', products_count: 3 },
-//         { id: 3, slug: 'recamaras', name: 'Recámaras', image_url: '/img/recamaras.jpg', products_count: 4 },
-//         { id: 4, slug: 'salas', name: 'Salas', image_url: '/img/salas.jpg', products_count: 2 }
-//     ];
-// }
-
-// ✅ FALLBACKS MEJORADOS
+//FALLBACKS 
 function loadFallbackCategories() {
     const fallbackCategories = [
         { 
@@ -1552,27 +1502,7 @@ function loadFallbackProducts() {
 
 // ========== SISTEMA DE CATÁLOGO ==========
 
-// Función para inicializar catálogo
-// function initCatalog() {
-//     const grid = document.getElementById('categories-grid');
-//     if (!grid) return;
-
-//     // Clicks en tarjetas de categoría
-//     grid.addEventListener('click', e => {
-//         const card = e.target.closest('.category-card');
-//         if (!card) return;
-//         const categoryId = card.dataset.categoryId;
-//         showProductView(categoryId);
-//     });
-
-//     // Botón Volver
-//     const backButton = document.querySelector('.back-button');
-//     if (backButton) backButton.addEventListener('click', showCategoryView);
-// }
-
-
-// ✅ INICIALIZACIÓN 
-// ✅ INITIALIZEAPP MEJORADA
+// INITIALIZEAPP 
 async function initializeApp() {
     try {
         console.log('🚀 Iniciando aplicación MaderaViva...');
@@ -1643,7 +1573,7 @@ async function initializeApp() {
 
 
 
-// ✅ FUNCIÓN DE DIAGNÓSTICO PARA DEBUGGEAR
+// FUNCIÓN DE DIAGNÓSTICO PARA DEBUGGEAR
 async function diagnoseAPI() {
     console.group('🔍 DIAGNÓSTICO DE API');
     
@@ -1694,7 +1624,7 @@ document.addEventListener('DOMContentLoaded', initializeApp);
 
 
 
-// ✅ FUNCIÓN CORREGIDA - showProductView
+// FUNCIÓN CORREGIDA - showProductView
 async function showProductView(categorySlug) {
     try {
         console.log('🔄 Cambiando a vista de productos para:', categorySlug);
@@ -1802,35 +1732,6 @@ async function loadFeaturedProducts() {
 // ==========================================
 //  CARGA INICIAL DEL CATÁLOGO
 // ==========================================
-// async function loadInitialData() {
-//     try {
-//         console.log('Cargando datos iniciales...');
-//         const categories = await loadCategories();
-//         renderCategories(categories);
-//         initCatalog(); 
-//         console.log('Datos iniciales cargados');
-//     } catch (err) {
-//         console.error('Error cargando datos iniciales:', err);
-//         showAlert('Error al cargar el catálogo', 'danger');
-//     }
-// }
-
-// async function loadInitialData() {
-//     try {
-//         console.log('Cargando datos iniciales...');
-        
-//         // Cargar categorías
-//         const cats = await loadCategories();
-//         categories = cats; // Guardar en variable global
-//         renderCategories(categories);
-        
-//         console.log('Datos iniciales cargados');
-//     } catch (error) {
-//         console.error('Error cargando datos iniciales:', error);
-//         showAlert('Error al cargar el catálogo', 'danger');
-//     }
-// }
-
 
 
 async function loadCartFromServer() {
@@ -1922,7 +1823,7 @@ async function showProductView(categoryRef) {
     resetFilters();
 }
 
-// ✅ FUNCIÓN applyFilters SIMPLIFICADA
+// FUNCIÓN applyFilters SIMPLIFICADA
 function applyFilters() {
     const priceRange = document.getElementById('priceRange');
     const brandFilter = document.getElementById('brandFilter');
@@ -1947,25 +1848,7 @@ function applyFilters() {
 }
 
 
-
-// function showCategoryView() {
-//   document.querySelectorAll('#catalog .view').forEach(v => v.classList.remove('active'));
-//   document.getElementById('category-summary-view').classList.add('active');
-// }
-
-// function applyFilters() {
-//     const maxPrice = +document.getElementById('priceRange').value;
-//     const brand = document.getElementById('brandFilter').value;
-
-//     filteredProducts = currentProducts.filter(p =>
-//         p.price <= maxPrice &&
-//         (brand === 'all' || p.brand === brand)
-//     );
-
-//     renderProductsGrid(filteredProducts);
-// }
-
-// ✅ FUNCIÓN PARA VOLVER A CATEGORÍAS
+// FUNCIÓN PARA VOLVER A CATEGORÍAS
 function showCategoryView() {
     console.log('🔄 Volviendo a vista de categorías');
     
@@ -1979,8 +1862,7 @@ function showCategoryView() {
 }
 
 
-// Función para resetear filtros
-// ✅ FUNCIÓN resetFilters MEJORADA
+// FUNCIÓN resetFilters 
 function resetFilters() {
     // Crear filtros si no existen
     createFiltersPanel();
@@ -2060,7 +1942,6 @@ filteredProducts.forEach(product => {
 // ========== VISTA RÁPIDA DE PRODUCTOS ==========
 
 // Función para abrir vista rápida
-// Función corregida para abrir vista rápida
 async function openQuickview(productId) {
     try {
         // Buscar producto en los datos cargados
